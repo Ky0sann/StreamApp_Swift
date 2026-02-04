@@ -1,4 +1,3 @@
-// Services/AuthService.swift
 import Foundation
 
 class AuthService {

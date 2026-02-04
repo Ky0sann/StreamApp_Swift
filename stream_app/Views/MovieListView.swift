@@ -1,4 +1,3 @@
-// Views/MovieListView.swift
 import SwiftUI
 
 struct MovieListView: View {

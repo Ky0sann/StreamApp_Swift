@@ -1,4 +1,3 @@
-// ViewModels/MovieViewModel.swift
 import Foundation
 
 @MainActor

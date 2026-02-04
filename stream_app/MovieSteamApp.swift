@@ -1,4 +1,3 @@
-// MovieStreamApp.swift
 import SwiftUI
 
 @main
@@ -8,9 +7,9 @@ struct MovieStreamApp: App {
     var body: some Scene {
         WindowGroup {
             if authVM.isLogged {
-                MovieListView(authVM: authVM)
+                MainTabView(authVM: authVM)
             } else {
-                NavigationStack {
+                            NavigationStack {
                     LoginView(authVM: authVM)
                 }
             }

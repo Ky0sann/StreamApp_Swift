@@ -1,4 +1,3 @@
-// ViewModels/AuthViewModel.swift
 import Foundation
 
 class AuthViewModel: ObservableObject {

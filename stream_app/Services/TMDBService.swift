@@ -1,4 +1,3 @@
-// Services/TMDBService.swift
 import Foundation
 
 class TMDBService {

@@ -1,4 +1,3 @@
-// Views/RegisterView.swift
 import SwiftUI
 
 struct RegisterView: View {

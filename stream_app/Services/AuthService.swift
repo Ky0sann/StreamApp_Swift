@@ -23,7 +23,7 @@ class AuthService {
             return false
         }
 
-        guard storage.userExists(email: email) else {
+        guard storage.validateCredentials(email: email, password: password) else {
             errorMessageLogin = "Adresse mail ou mot de passe incorrect"
             return false
         }
@@ -74,11 +74,13 @@ class AuthService {
             errorMessageLogin = "Cette adresse mail est déjà utilisée."
             return false
         }
-
+        
+        let hashedPassword = password.sha256()
+        
         let user = User(
             email: email,
             username: username,
-            password: String(password.hashValue)
+            password: hashedPassword
             
         )
 

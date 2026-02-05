@@ -1,43 +1,67 @@
 import Foundation
 
 class AuthService {
-    private let userKey = "USER_LOGGED"
-    private let userDataKey = "USER_DATA"
 
+    private let storage = UserStorageService()
+    private let loggedUserEmailKey = "LOGGED_USER_EMAIL"
+
+    // MARK: - LOGIN
     func login(email: String, password: String) -> Bool {
-        if email.isEmpty || password.isEmpty { return false }
-        UserDefaults.standard.set(true, forKey: userKey)
+        guard !email.isEmpty, !password.isEmpty else { return false }
 
-        // Si l'utilisateur n'existe pas encore, créer un User par défaut
-        if getUser() == nil {
-            let user = User(email: email, username: email.components(separatedBy: "@").first ?? email)
-            saveUser(user: user)
+        guard storage.userExists(email: email) else {
+            return false
         }
 
+        UserDefaults.standard.set(email, forKey: loggedUserEmailKey)
         return true
     }
 
+    // MARK: REGISTER
     func register(email: String, password: String) -> Bool {
-        login(email: email, password: password)
-    }
+        guard !email.isEmpty, !password.isEmpty else { return false }
 
-    func logout() {
-        UserDefaults.standard.set(false, forKey: userKey)
-    }
-
-    func isLogged() -> Bool {
-        UserDefaults.standard.bool(forKey: userKey)
-    }
-
-    func saveUser(user: User) {
-        if let data = try? JSONEncoder().encode(user) {
-            UserDefaults.standard.set(data, forKey: userDataKey)
+        guard !storage.userExists(email: email) else {
+            return false
         }
+
+        let user = User(
+            email: email,
+            username: email.components(separatedBy: "@").first ?? email
+        )
+
+        storage.addUser(user)
+        UserDefaults.standard.set(email, forKey: loggedUserEmailKey)
+        return true
+    }
+
+    // MARK: LOGOUT
+    func logout() {
+        UserDefaults.standard.removeObject(forKey: loggedUserEmailKey)
+    }
+
+    // MARK: SESSION
+    func isLogged() -> Bool {
+        UserDefaults.standard.string(forKey: loggedUserEmailKey) != nil
     }
 
     func getUser() -> User? {
-        guard let data = UserDefaults.standard.data(forKey: userDataKey) else { return nil }
-        return try? JSONDecoder().decode(User.self, from: data)
+        guard let email = UserDefaults.standard.string(forKey: loggedUserEmailKey) else {
+            return nil
+        }
+        return storage.getUser(email: email)
+    }
+
+    // MARK: SAVE USER
+    func saveUser(user: User) {
+        var users = storage.loadUsers()
+
+        if let index = users.firstIndex(where: { $0.email.lowercased() == user.email.lowercased() }) {
+            users[index] = user
+        } else {
+            users.append(user)
+        }
+
+        storage.saveUsers(users)
     }
 }
-

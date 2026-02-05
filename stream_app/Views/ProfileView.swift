@@ -8,6 +8,8 @@ struct ProfileView: View {
     @State private var editing = false
     @State private var newUsername = ""
     @State private var newBio = ""
+    
+    @StateObject private var userRatingsVM = UserRatingsViewModel()
 
     var body: some View {
         NavigationStack {
@@ -34,6 +36,45 @@ struct ProfileView: View {
                         }
                     }
                 }
+                
+                Section("Mes dernières notes") {
+                    if userRatingsVM.ratings.isEmpty {
+                        Text("Vous n'avez pas encore noté de film")
+                            .foregroundColor(.gray)
+                    } else {
+                        ForEach(userRatingsVM.ratings.prefix(10)) { rating in
+                            NavigationLink(
+                                destination: MovieDetailView(movie: rating.movie)
+                            ) {
+                                HStack(spacing: 12) {
+
+                                    if let url = rating.movie.posterURL {
+                                        AsyncImage(url: url) { image in
+                                            image.resizable()
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                        .frame(width: 40, height: 60)
+                                        .cornerRadius(6)
+                                    }
+
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(rating.movie.title)
+                                            .bold()
+
+                                        HStack {
+                                            ReadOnlyStarRatingView(rating: rating.value)
+                                            Text(rating.title)
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
 
                 Section("Favoris") {
                     if favoriteVM.favorites.isEmpty {
@@ -70,6 +111,7 @@ struct ProfileView: View {
             .navigationTitle("Profil")
             .onAppear {
                 favoriteVM.loadFavorites()
+                userRatingsVM.load()
             }
         }
     }

@@ -3,6 +3,8 @@ import SwiftUI
 struct MovieDetailView: View {
     let movie: Movie
     @StateObject private var favoriteVM = FavoriteViewModel()
+    @StateObject private var ratingVM = RatingViewModel()
+    @State private var selectedRating: Double = 0
 
     var body: some View {
         ScrollView {
@@ -23,6 +25,35 @@ struct MovieDetailView: View {
 
                 Text(movie.overview)
                     .font(.body)
+                
+                Text("Note des utilisateurs")
+                        .font(.headline)
+
+                    if ratingVM.average > 0 {
+                        Text("⭐️ \(ratingVM.average, specifier: "%.1f") / 5 (\(ratingVM.totalRatings) avis)")
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text("Pas encore de note")
+                            .foregroundColor(.secondary)
+                    }
+
+                    Divider()
+
+                    Text("Votre note")
+                        .font(.headline)
+
+                    StarRatingView(rating: $selectedRating)
+
+                    if selectedRating > 0 {
+                        Text(RatingTitles.title(for: selectedRating))
+                            .font(.caption)
+                            .foregroundColor(.gray)
+
+                        Button("Enregistrer ma note") {
+                            ratingVM.rate(movie: movie, value: selectedRating)
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
 
                 Button(action: {
                     favoriteVM.toggleFavorite(movie: movie)
@@ -41,6 +72,11 @@ struct MovieDetailView: View {
         }
         .navigationTitle(movie.title)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            ratingVM.load(movie: movie)
+            selectedRating = ratingVM.userRating?.value ?? 0
+        }
+
     }
 }
 

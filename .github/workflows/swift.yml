@@ -3,20 +3,50 @@
 
 name: Swift
 
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "test", "development" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "test", "development" ]
 
 jobs:
-  build:
-
+  ios-ci:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Vérifier Xcode
+        run: xcodebuild -version
+
+      # ------------------------
+      # SwiftLint (Swift + SwiftUI)
+      # ------------------------
+      - name: Installer SwiftLint
+        run: |
+          brew update
+          brew install swiftlint
+
+      - name: Lancer SwiftLint
+        run: |
+          swiftlint lint --strict
+
+      # ------------------------
+      # Build & Tests iOS
+      # ------------------------
+      - name: Nettoyer le projet
+        run: |
+          xcodebuild clean \
+          -project stream_app.xcodeproj \
+          -scheme MovieStreamApp
+
+      - name: Lancer les tests Unitaires & UI
+        run: |
+          xcodebuild test \
+          -project stream_app.xcodeproj \
+          -scheme MovieStreamApp \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -enableCodeCoverage YES \
+          CODE_SIGNING_ALLOWED=NO

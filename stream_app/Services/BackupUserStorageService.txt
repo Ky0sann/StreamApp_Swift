@@ -1,0 +1,43 @@
+//
+//  UserStorageService.swift
+//  stream_app
+//
+//  Created by Cours on 05/02/2026.
+//
+import Foundation
+
+class UserStorageService {
+
+    private var usersFileURL: URL {
+        FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("users.json")
+    }
+
+    func loadUsers() -> [User] {
+        guard let data = try? Data(contentsOf: usersFileURL) else {
+            return []
+        }
+        return (try? JSONDecoder().decode([User].self, from: data)) ?? []
+    }
+
+    func saveUsers(_ users: [User]) {
+        if let data = try? JSONEncoder().encode(users) {
+            try? data.write(to: usersFileURL)
+        }
+    }
+
+    func addUser(_ user: User) {
+        var users = loadUsers()
+        users.append(user)
+        saveUsers(users)
+    }
+
+    func userExists(email: String) -> Bool {
+        loadUsers().contains { $0.email == email }
+    }
+
+    func getUser(email: String) -> User? {
+        loadUsers().first { $0.email == email }
+    }
+}

@@ -1,0 +1,19 @@
+opt_in_rules:
+  - trailing_whitespace
+  - vertical_whitespace
+  - empty_count
+  - explicit_init
+  - closure_spacing
+  - force_unwrapping
+
+disabled_rules:
+  - line_length
+  - type_name
+
+included:
+  - stream_app
+
+excluded:
+  - Pods
+  - .build
+  - DerivedData

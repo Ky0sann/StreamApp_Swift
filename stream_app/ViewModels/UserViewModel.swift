@@ -16,4 +16,3 @@ class UserViewModel: ObservableObject {
         authService.saveUser(user: user)
     }
 }
-

@@ -4,7 +4,10 @@ struct MovieDetailView: View {
     let movie: Movie
     @StateObject private var favoriteVM = FavoriteViewModel()
     @StateObject private var ratingVM = RatingViewModel()
+    @StateObject private var videoVM = MovieVideoViewModel()
+    
     @State private var selectedRating: Double = 0
+    @State private var showingTrailer = false
 
     var body: some View {
         ScrollView {
@@ -26,6 +29,17 @@ struct MovieDetailView: View {
                 Text(movie.overview)
                     .font(.body)
                 
+                if let _ = videoVM.trailerURL {
+                    Button("Voir la bande annonce") {
+                        showingTrailer = true
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+                }
+
                 Text("Note des utilisateurs")
                         .font(.headline)
 
@@ -75,8 +89,15 @@ struct MovieDetailView: View {
         .onAppear {
             ratingVM.load(movie: movie)
             selectedRating = ratingVM.userRating?.value ?? 0
+            Task {
+                await videoVM.loadVideos(for: movie.id)
+            }
         }
-
+        .sheet(isPresented: $showingTrailer) {
+            if let url = videoVM.trailerURL {
+                TrailerView(url: url)
+                    .ignoresSafeArea()
+            }
+        }
     }
 }
-

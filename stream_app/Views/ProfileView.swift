@@ -4,6 +4,7 @@ struct ProfileView: View {
     @ObservedObject var authVM: AuthViewModel
     @StateObject private var favoriteVM = FavoriteViewModel()
     @StateObject private var userVM = UserViewModel()
+    @EnvironmentObject var themeVM: ThemeViewModel
 
     @State private var editing = false
     @State private var newUsername = ""
@@ -99,6 +100,17 @@ struct ProfileView: View {
                         }
                     }
                 }
+                
+                Section("Apparence") {
+                    Picker("Thème", selection: $themeVM.currentTheme) {
+                        ForEach(AppTheme.allCases) { theme in
+                            Label(theme.title, systemImage: theme.icon)
+                                .tag(theme)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+
 
                 Section {
                     Button("Se déconnecter") {

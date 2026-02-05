@@ -29,6 +29,16 @@ struct MovieListView: View {
                 }
             }
             .searchable(text: $movieVM.searchText, prompt: "Rechercher un film")
+            .onChange(of: movieVM.searchText) { _, newValue in
+                Task {
+                    try await Task.sleep(nanoseconds: 300_000_000)
+                    if newValue == movieVM.searchText {
+                        if movieVM.searchText.count >= 4 || movieVM.searchText.isEmpty {
+                            await movieVM.search()
+                        }
+                    }
+                }
+            }
             .submitLabel(.search)
             .onSubmit(of: .search) {
                 Task {

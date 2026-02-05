@@ -17,6 +17,11 @@ class AuthService {
             errorMessageLogin = "Veillez remplir tous les champs"
             return false
         }
+        
+        guard email.contains("@") else {
+            errorMessageLogin = "L’adresse email doit contenir @."
+            return false
+        }
 
         guard storage.userExists(email: email) else {
             errorMessageLogin = "Adresse mail ou mot de passe incorrect"
@@ -31,7 +36,7 @@ class AuthService {
 
     
     
-    func register(email: String, password: String) -> Bool {
+    func register(username:String, email: String, password: String) -> Bool {
         errorMessageLogin = nil
         successMessage = nil
         
@@ -72,11 +77,14 @@ class AuthService {
 
         let user = User(
             email: email,
-            username: email.components(separatedBy: "@").first ?? email
+            username: username,
+            password: String(password.hashValue)
+            
         )
 
         storage.addUser(user)
         UserDefaults.standard.set(email, forKey: loggedUserEmailKey)
+        successMessage = "Votre compte a été créé avec succès"
         return true
     }
 

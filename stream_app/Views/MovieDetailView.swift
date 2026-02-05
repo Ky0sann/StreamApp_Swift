@@ -11,6 +11,8 @@ struct MovieDetailView: View {
     @State private var showingTrailer = false
     
     @StateObject private var commentVM = CommentViewModel()
+    
+    @StateObject private var castVM = MovieCastViewModel()
 
     var body: some View {
         ScrollView {
@@ -32,6 +34,84 @@ struct MovieDetailView: View {
                 Text(movie.overview)
                     .font(.body)
                 
+                if !castVM.directors.isEmpty {
+                    Text("🎬 Réalisateur(s)")
+                        .font(.headline)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(castVM.directors) { person in
+                                NavigationLink(destination: PersonDetailView(
+                                    person: Person(
+                                        id: person.id,
+                                        name: person.name,
+                                        profile_path: person.profile_path,
+                                        known_for_department: "Directing"
+                                    )
+                                )) {
+                                    VStack {
+                                        if let url = person.profileURL {
+                                            AsyncImage(url: url) { image in
+                                                image.resizable()
+                                            } placeholder: {
+                                                Color.gray.opacity(0.3)
+                                            }
+                                            .frame(width: 80, height: 120)
+                                            .cornerRadius(8)
+                                        }
+
+                                        Text(person.name)
+                                            .font(.caption)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .frame(width: 90)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Text("🎭 Casting")
+                    .font(.headline)
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(castVM.cast.prefix(20)) { person in
+                            NavigationLink(destination: PersonDetailView(
+                                person: Person(
+                                    id: person.id,
+                                    name: person.name,
+                                    profile_path: person.profile_path,
+                                    known_for_department: "Acting"
+                                )
+                            )) {
+                                VStack {
+                                    if let url = person.profileURL {
+                                        AsyncImage(url: url) { image in
+                                            image.resizable()
+                                        } placeholder: {
+                                            Color.gray.opacity(0.3)
+                                        }
+                                        .frame(width: 80, height: 120)
+                                        .cornerRadius(8)
+                                    }
+
+                                    Text(person.name)
+                                        .font(.caption)
+                                        .multilineTextAlignment(.center)
+
+                                    if let character = person.character {
+                                        Text(character)
+                                            .font(.caption2)
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
+                                .frame(width: 90)
+                            }
+                        }
+                    }
+                }
+
                 if let _ = videoVM.trailerURL {
                     Button("Voir la bande annonce") {
                         showingTrailer = true
@@ -160,6 +240,7 @@ struct MovieDetailView: View {
 
             Task {
                 await videoVM.loadVideos(for: movie.id)
+                await castVM.load(movie: movie)
             }
         }
         .sheet(isPresented: $showingTrailer) {

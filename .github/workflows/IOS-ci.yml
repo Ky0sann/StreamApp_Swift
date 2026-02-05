@@ -1,0 +1,33 @@
+name: Stream APP - IOS Tests CI
+
+on:
+  push:
+    branches: [ "test", "development" ]
+  pull_request:
+    branches: [ "test" ]
+
+jobs:
+  ios-tests:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Vérifier Xcode
+        run: xcodebuild -version
+
+      - name: Nettoyage du projet
+        run: |
+          xcodebuild clean \
+          -project stream_app.xcodeproj \
+          -scheme MovieStreamApp
+
+      - name: Lancer tests Unitaires & UI
+        run: |
+          xcodebuild test \
+          -project stream_app.xcodeproj \
+          -scheme MovieStreamApp \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -enableCodeCoverage YES \
+          CODE_SIGNING_ALLOWED=NO

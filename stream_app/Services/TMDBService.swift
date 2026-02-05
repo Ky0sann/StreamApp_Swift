@@ -15,5 +15,19 @@ class TMDBService {
         let response = try JSONDecoder().decode(MovieResponse.self, from: data)
         return response.results
     }
+    
+    func searchMovies(query: String) async throws -> [Movie] {
+            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            let urlString =
+            "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=fr-FR&query=\(encodedQuery)"
+
+            guard let url = URL(string: urlString) else {
+                throw URLError(.badURL)
+            }
+
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let response = try JSONDecoder().decode(MovieResponse.self, from: data)
+            return response.results
+        }
 }
 

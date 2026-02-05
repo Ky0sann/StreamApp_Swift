@@ -28,10 +28,11 @@ struct MovieListView: View {
                     }
                 }
             }
-            .navigationTitle("Films populaires")
-            .toolbar {
-                Button("Logout") {
-                    authVM.logout()
+            .searchable(text: $movieVM.searchText, prompt: "Rechercher un film")
+            .submitLabel(.search)
+            .onSubmit(of: .search) {
+                Task {
+                    await movieVM.search()
                 }
             }
             .task {

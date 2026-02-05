@@ -8,6 +8,10 @@
   </tr>
 </table>
 
+## Utilisation
+
+- Lancer l'app sur Xcode
+
 
 ## 🌐 Nos portfolios
 
@@ -15,6 +19,21 @@
 - **Alla-Eddine Boukabou** — [allabk.me](https://allabk.me)
 - **Alexandre Gouraud** — [alexandregouraud.fr](https://alexandregouraud.fr)
 
+## API
+
+**TMDP** - [The Movie Database](https://developer.themoviedb.org/docs/getting-started)
+
+## Fonctionnalités
+
+- Authentification (création, connexion , déconnexion)
+- Gestion du profil utilisateur (affichage et modification)
+- Récupération et affichage des films via API
+- Détail d'un Film (image, description, note)
+- Gestion des Favoris par utilisateur
+
+## Structure du projet
+
+- Architecture MVVM
 
 ## Branches
 

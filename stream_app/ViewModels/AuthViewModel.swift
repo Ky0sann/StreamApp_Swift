@@ -32,13 +32,19 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func register(email: String, password: String) {
-        let success = authService.register(email: email, password: password)
+    func register(username:String,email: String, password: String) {
+        let success = authService.register(username: username, email: email, password: password)
 
         if success {
-            isLogged = true
             errorMessageLogin = nil
-        } else {
+            successMessage = authService.successMessage
+    
+            // Délai avant navigation
+           DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+               self.isLogged = true
+               self.successMessage = nil
+           }
+        }  else {
             isLogged = false
             errorMessageLogin = authService.errorMessageLogin
         }

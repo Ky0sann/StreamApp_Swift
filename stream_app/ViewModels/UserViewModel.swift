@@ -7,7 +7,7 @@ class UserViewModel: ObservableObject {
     private let authService = AuthService()
 
     init() {
-        self.user = authService.getUser() ?? User(email: "test@example.com", username: "Utilisateur")
+        self.user = authService.getUser() ?? User(email: "test@example.com", username:"DefaultName", password: "@Aa1azer")
     }
 
     func updateUser(username: String, bio: String) {

@@ -3,17 +3,21 @@ import SwiftUI
 @main
 struct MovieStreamApp: App {
     @StateObject private var authVM = AuthViewModel()
+    @StateObject private var themeVM = ThemeViewModel()
 
     var body: some Scene {
         WindowGroup {
-            if authVM.isLogged {
-                MainTabView(authVM: authVM)
-            } else {
-                            NavigationStack {
-                    LoginView(authVM: authVM)
+            Group {
+                if authVM.isLogged {
+                    MainTabView(authVM: authVM)
+                } else {
+                    NavigationStack {
+                        LoginView(authVM: authVM)
+                    }
                 }
             }
+            .environmentObject(themeVM)
+            .preferredColorScheme(themeVM.currentTheme.colorScheme)
         }
     }
 }
-

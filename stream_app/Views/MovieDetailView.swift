@@ -5,9 +5,12 @@ struct MovieDetailView: View {
     @StateObject private var favoriteVM = FavoriteViewModel()
     @StateObject private var ratingVM = RatingViewModel()
     @StateObject private var videoVM = MovieVideoViewModel()
+    private let authService = AuthService()
     
     @State private var selectedRating: Double = 0
     @State private var showingTrailer = false
+    
+    @StateObject private var commentVM = CommentViewModel()
 
     var body: some View {
         ScrollView {
@@ -65,9 +68,73 @@ struct MovieDetailView: View {
 
                         Button("Enregistrer ma note") {
                             ratingVM.rate(movie: movie, value: selectedRating)
+                            commentVM.load(movie: movie)
                         }
                         .buttonStyle(.borderedProminent)
                     }
+                
+                Divider()
+
+                Text("Commentaires")
+                    .font(.headline)
+
+                TextField("Ajouter un commentaire…", text: $commentVM.newCommentText, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+
+                Button("Publier") {
+                    commentVM.addComment(
+                        movie: movie,
+                        rating: selectedRating > 0 ? selectedRating : nil
+                    )
+                }
+                .buttonStyle(.bordered)
+                .disabled(commentVM.newCommentText.trimmingCharacters(in: .whitespaces).isEmpty)
+                
+                if commentVM.comments.isEmpty {
+                    Text("Aucun commentaire pour le moment")
+                        .foregroundColor(.secondary)
+                } else {
+                    ForEach(commentVM.comments) { comment in
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack {
+                                Text(comment.username)
+                                    .bold()
+                                
+                                if comment.userEmail == AuthService().getUser()?.email {
+                                    Text("Vous")
+                                        .font(.caption2)
+                                        .padding(4)
+                                        .background(Color.blue.opacity(0.2))
+                                        .cornerRadius(4)
+                                }
+                                
+                                if comment.userEmail == authService.getUser()?.email {
+                                    Button("Supprimer") {
+                                        commentVM.deleteComment(comment, movie: movie)
+                                    }
+                                    .font(.caption)
+                                    .foregroundColor(.red)
+                                }
+
+                                Spacer()
+
+                                if let rating = commentVM.rating(for: comment) {
+                                    ReadOnlyStarRatingView(rating: rating)
+                                }
+                            }
+
+                            Text(comment.text)
+
+                            Text(comment.date, style: .date)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding(.vertical, 6)
+
+                        Divider()
+                    }
+                }
+
 
                 Button(action: {
                     favoriteVM.toggleFavorite(movie: movie)
@@ -89,6 +156,8 @@ struct MovieDetailView: View {
         .onAppear {
             ratingVM.load(movie: movie)
             selectedRating = ratingVM.userRating?.value ?? 0
+            commentVM.load(movie: movie)
+
             Task {
                 await videoVM.loadVideos(for: movie.id)
             }

@@ -15,6 +15,12 @@ struct RegisterView: View {
 
             SecureField("Mot de passe", text: $password)
                 .textFieldStyle(.roundedBorder)
+            
+            if let error = authVM.errorMessageLogin {
+                Text(error)
+                    .foregroundColor(.red)
+                    .font(.caption)
+            }
 
             Button("S'inscrire") {
                 authVM.register(email: email, password: password)

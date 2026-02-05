@@ -15,7 +15,22 @@ struct LoginView: View {
 
             SecureField("Mot de passe", text: $password)
                 .textFieldStyle(.roundedBorder)
+            
+//            Affichage des messages d'erreurs / réussite
+            
+            if let success = authVM.successMessage {
+                Text(success)
+                    .foregroundColor(.green)
+                    .transition(.opacity)
+            }
+            
+            if let error = authVM.errorMessageLogin {
+                Text(error)
+                    .foregroundColor(.red)
+                    .font(.caption)
+            }
 
+//            Bouton Login
             Button("Se connecter") {
                 authVM.login(email: email, password: password)
             }

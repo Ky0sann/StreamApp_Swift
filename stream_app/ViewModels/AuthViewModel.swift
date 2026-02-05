@@ -2,6 +2,9 @@ import Foundation
 
 class AuthViewModel: ObservableObject {
     @Published var isLogged: Bool = false
+    
+    @Published var errorMessageLogin: String? 
+    @Published var successMessage: String?
 
     private let authService = AuthService()
 
@@ -10,11 +13,35 @@ class AuthViewModel: ObservableObject {
     }
 
     func login(email: String, password: String) {
-        isLogged = authService.login(email: email, password: password)
+        let success = authService.login(email: email, password: password)
+
+        if success {
+            errorMessageLogin = nil
+            successMessage = authService.successMessage
+            
+            // Délai avant navigation
+                   DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                       self.isLogged = true
+                       self.successMessage = nil
+                   }
+        } else {
+            isLogged = false
+            successMessage = nil
+            errorMessageLogin = authService.errorMessageLogin
+            
+        }
     }
 
     func register(email: String, password: String) {
-        isLogged = authService.register(email: email, password: password)
+        let success = authService.register(email: email, password: password)
+
+        if success {
+            isLogged = true
+            errorMessageLogin = nil
+        } else {
+            isLogged = false
+            errorMessageLogin = authService.errorMessageLogin
+        }
     }
 
     func logout() {

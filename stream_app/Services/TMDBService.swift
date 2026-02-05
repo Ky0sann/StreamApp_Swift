@@ -38,5 +38,14 @@ class TMDBService {
             let response = try JSONDecoder().decode(MovieVideosResponse.self, from: data)
             return response.results
     }
-}
+    
+    func fetchMovie(id: Int) async throws -> Movie {
+        let urlString =
+        "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)&language=fr-FR"
 
+        let url = URL(string: urlString)!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode(Movie.self, from: data)
+    }
+
+}

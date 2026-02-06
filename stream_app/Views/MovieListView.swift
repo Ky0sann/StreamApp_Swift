@@ -29,6 +29,7 @@ struct MovieListView: View {
                 }
             }
             .searchable(text: $movieVM.searchText, prompt: "Rechercher un film")
+            .accessibilityIdentifier("movie_search")
             .onChange(of: movieVM.searchText) { _, newValue in
                 Task {
                     try await Task.sleep(nanoseconds: 300_000_000)

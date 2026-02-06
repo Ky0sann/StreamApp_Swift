@@ -116,6 +116,7 @@ struct MovieDetailView: View {
                     Button("Voir la bande annonce") {
                         showingTrailer = true
                     }
+                    .accessibilityIdentifier("trailer_button")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
@@ -167,6 +168,7 @@ struct MovieDetailView: View {
                         rating: selectedRating > 0 ? selectedRating : nil
                     )
                 }
+                .accessibilityIdentifier("publish_comment")
                 .buttonStyle(.bordered)
                 .disabled(commentVM.newCommentText.trimmingCharacters(in: .whitespaces).isEmpty)
                 
@@ -227,7 +229,7 @@ struct MovieDetailView: View {
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
-                }
+                }.accessibilityIdentifier("favorite_button")
             }
             .padding()
         }

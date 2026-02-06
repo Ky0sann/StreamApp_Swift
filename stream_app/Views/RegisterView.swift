@@ -13,12 +13,15 @@ struct RegisterView: View {
                 .font(.title)
             
             TextField("Username", text: $username)
+                .accessibilityIdentifier("register_username")
                 .textFieldStyle(.roundedBorder)
-            
+
             TextField("Email", text: $email)
+                .accessibilityIdentifier("register_email")
                 .textFieldStyle(.roundedBorder)
 
             SecureField("Mot de passe", text: $password)
+                .accessibilityIdentifier("register_password")
                 .textFieldStyle(.roundedBorder)
             
 //            Affichage des messages d'erreurs / réussite
@@ -38,7 +41,7 @@ struct RegisterView: View {
 //            Bouton Register
             Button("S'inscrire") {
                 authVM.register(username:username ,email: email, password: password)
-            }
+            }.accessibilityIdentifier("register_button")
         }
         .padding()
     }

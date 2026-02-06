@@ -12,9 +12,11 @@ struct LoginView: View {
 
             TextField("Email", text: $email)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("login_email")
 
             SecureField("Mot de passe", text: $password)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("login_password")
             
 //            Affichage des messages d'erreurs / réussite
             
@@ -33,11 +35,11 @@ struct LoginView: View {
 //            Bouton Login
             Button("Se connecter") {
                 authVM.login(email: email, password: password)
-            }
+            }.accessibilityIdentifier("login_button")
 
             NavigationLink("Créer un compte") {
                 RegisterView(authVM: authVM)
-            }
+            }.accessibilityIdentifier("go_to_register")
         }
         .padding()
     }

@@ -1,10 +1,3 @@
-//
-//  stream_appUITestsLaunchTests.swift
-//  stream_appUITests
-//
-//  Created by Cours on 06/02/2026.
-//
-
 import XCTest
 
 final class stream_appUITestsLaunchTests: XCTestCase {
@@ -18,16 +11,48 @@ final class stream_appUITestsLaunchTests: XCTestCase {
     }
 
     @MainActor
-    func testLaunch() throws {
+    func testAppLaunchAndInitialScreen() throws {
         let app = XCUIApplication()
+
+        // Optionnel : flags UI Tests
+        app.launchArguments.append("--ui-testing")
         app.launch()
 
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
+        // CAS 1 : écran Login
+        if app.staticTexts["MovieStream"].exists {
+            XCTAssertTrue(app.textFields["Email"].exists)
+            XCTAssertTrue(app.secureTextFields["Mot de passe"].exists)
 
-        let attachment = XCTAttachment(screenshot: app.screenshot())
-        attachment.name = "Launch Screen"
-        attachment.lifetime = .keepAlways
-        add(attachment)
+            let loginAttachment = XCTAttachment(screenshot: app.screenshot())
+            loginAttachment.name = "Launch - Login Screen"
+            loginAttachment.lifetime = .keepAlways
+            add(loginAttachment)
+
+            return
+        }
+
+        // CAS 2 : utilisateur déjà connecté → MainTabView
+        if app.tabBars.firstMatch.exists {
+            XCTAssertTrue(app.tabBars.buttons["Films"].exists)
+            XCTAssertTrue(app.tabBars.buttons["Cast"].exists)
+            XCTAssertTrue(app.tabBars.buttons["Profil"].exists)
+
+            let mainAttachment = XCTAttachment(screenshot: app.screenshot())
+            mainAttachment.name = "Launch - MainTabView"
+            mainAttachment.lifetime = .keepAlways
+            add(mainAttachment)
+
+            return
+        }
+
+        // Si aucun écran attendu n'est trouvé
+        XCTFail("Aucun écran valide détecté au lancement")
+    }
+
+    @MainActor
+    func testLaunchPerformance() throws {
+        measure(metrics: [XCTApplicationLaunchMetric()]) {
+            XCUIApplication().launch()
+        }
     }
 }

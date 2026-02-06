@@ -11,9 +11,7 @@ struct MovieStreamApp: App {
                 if authVM.isLogged {
                     MainTabView(authVM: authVM)
                 } else {
-                    NavigationStack {
-                        LoginView(authVM: authVM)
-                    }
+                    GuestTabView(authVM: authVM)
                 }
             }
             .environmentObject(themeVM)

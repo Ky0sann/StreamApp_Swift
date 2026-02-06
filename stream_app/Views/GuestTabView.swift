@@ -18,10 +18,10 @@ struct GuestTabView: View {
                     Label("Films", systemImage: "film")
                 }
  
-            /*PeopleListView()
+            GuestPeopleListView()
                 .tabItem {
                     Label("Cast", systemImage: "person.3")
-                }*/
+                }
             
             SettingsView(authVM: authVM)
                 .tabItem {

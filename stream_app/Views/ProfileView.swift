@@ -9,6 +9,8 @@ struct ProfileView: View {
     @State private var editing = false
     @State private var newUsername = ""
     @State private var newBio = ""
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     @StateObject private var userRatingsVM = UserRatingsViewModel()
 
@@ -109,6 +111,25 @@ struct ProfileView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                }
+                
+                Section("Cache") {
+                    Button("Nettoyer le cache") {
+                        alertMessage = ClearCacheService.clearCache()
+                        showAlert = true
+                    }
+                    .foregroundColor(.red)
+                }
+                .alert("Cache", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text(alertMessage)
+                }
+ 
+                Section("Développeurs") {
+                    Link(destination: URL(string: "https://github.com/Ky0sann/StreamApp_Swift")!) {
+                        Label("Voir sur GitHub", systemImage: "link")
+                    }
                 }
 
 

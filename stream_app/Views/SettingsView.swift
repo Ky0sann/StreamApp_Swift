@@ -10,10 +10,10 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @ObservedObject var authVM: AuthViewModel
- 
+    
     @State private var showAlert = false
     @State private var alertMessage = ""
- 
+    
     var body: some View {
         NavigationStack {
             List {
@@ -26,20 +26,27 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.segmented)
                 }
- 
+                
+                
                 Section("Cache") {
                     Button("Nettoyer le cache") {
-                        clearCache()
+                        alertMessage = ClearCacheService.clearCache()
+                        showAlert = true
                     }
                     .foregroundColor(.red)
                 }
- 
-                Section("équipe de développement") {
+                .alert("Cache", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text(alertMessage)
+                }
+                
+                Section("Développeurs") {
                     Link(destination: URL(string: "https://github.com/Ky0sann/StreamApp_Swift")!) {
                         Label("Voir sur GitHub", systemImage: "link")
                     }
                 }
- 
+                
                 Section {
                     HStack(spacing: 12) {
                         NavigationLink(destination: LoginView(authVM: authVM)) {
@@ -51,18 +58,6 @@ struct SettingsView: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
                                         .stroke(Color.blue, lineWidth: 2)
-                                )
-                        }
- 
-                        NavigationLink(destination: RegisterView(authVM: authVM)) {
-                            Text("S'inscrire")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 14)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(Color.blue)
                                 )
                         }
                     }
@@ -79,31 +74,5 @@ struct SettingsView: View {
                 )
             }
         }
-    }
- 
-    private func clearCache() {
-        // Taille du cache avant nettoyage
-        let cacheSize = getCacheSize()
-        
-        // Nettoyage
-        URLCache.shared.removeAllCachedResponses()
-        
-        // Message à afficher
-        alertMessage = "Cache clear : \(formatBytes(cacheSize))"
-        showAlert = true
-    }
-    
-    // Calcul taille cache URLCache
-    private func getCacheSize() -> Int {
-        let cache = URLCache.shared
-        return cache.currentDiskUsage + cache.currentMemoryUsage
-    }
-    
-    // Format en MO
-    private func formatBytes(_ bytes: Int) -> String {
-        let formatter = ByteCountFormatter()
-        formatter.allowedUnits = [.useMB] // en MO
-        formatter.countStyle = .file
-        return formatter.string(fromByteCount: Int64(bytes))
     }
 }

@@ -16,30 +16,24 @@ struct GuestMovieListView: View {
             List {
                 // Header avec boutons
                 Section {
-                    HStack(spacing: 12) {
+                    HStack {
+                        Spacer()
+
                         NavigationLink(destination: LoginView(authVM: authVM)) {
                             Text("Se connecter")
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(Color.blue)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 14)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color.blue, lineWidth: 2)
-                                )
-                        }
- 
-                        NavigationLink(destination: RegisterView(authVM: authVM)) {
-                            Text("S'inscrire")
-                                .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(.white)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 14)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 20)
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(Color.blue)
+                                        .shadow(color: Color.blue.opacity(0.3), radius: 6, x: 0, y: 4)
                                 )
                         }
+                        .buttonStyle(.plain)
+
+                        Spacer()
                     }
                     .padding(.vertical, 8)
                 }
@@ -69,6 +63,7 @@ struct GuestMovieListView: View {
                     }
                 }
             }
+            .navigationTitle("Films")
             .searchable(text: $movieVM.searchText, prompt: "Rechercher un film")
             .onChange(of: movieVM.searchText) { _, newValue in
                 Task {

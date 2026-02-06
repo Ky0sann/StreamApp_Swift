@@ -6,7 +6,6 @@
 //
 
 import Testing
-@testable import stream_app
 
 struct stream_appTests {
 

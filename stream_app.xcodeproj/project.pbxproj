@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		3ACAF30C2F338ADF00EBD80A /* PBXContainerItemProxy */ = {
+		3AA48C4F2F35E08C000D25D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3ACAF2F42F338ADD00EBD80A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3ACAF2FB2F338ADD00EBD80A;
 			remoteInfo = stream_app;
 		};
-		3ACAF3162F338ADF00EBD80A /* PBXContainerItemProxy */ = {
+		3AA48C5E2F35E09D000D25D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3ACAF2F42F338ADD00EBD80A /* Project object */;
 			proxyType = 1;
@@ -24,12 +24,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AA48C4B2F35E08C000D25D3 /* stream_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stream_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AA48C582F35E09D000D25D3 /* stream_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stream_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACAF2FC2F338ADD00EBD80A /* stream_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stream_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ACAF30B2F338ADF00EBD80A /* stream_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stream_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ACAF3152F338ADF00EBD80A /* stream_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stream_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3AA48C4C2F35E08C000D25D3 /* stream_appTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = stream_appTests;
+			sourceTree = "<group>";
+		};
+		3AA48C592F35E09D000D25D3 /* stream_appUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = stream_appUITests;
+			sourceTree = "<group>";
+		};
 		3ACAF2FE2F338ADD00EBD80A /* stream_app */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = stream_app;
@@ -38,21 +48,21 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3AA48C482F35E08C000D25D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA48C552F35E09D000D25D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ACAF2F92F338ADD00EBD80A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3ACAF3082F338ADF00EBD80A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3ACAF3122F338ADF00EBD80A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -66,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				3ACAF2FE2F338ADD00EBD80A /* stream_app */,
+				3AA48C4C2F35E08C000D25D3 /* stream_appTests */,
+				3AA48C592F35E09D000D25D3 /* stream_appUITests */,
 				3ACAF2FD2F338ADD00EBD80A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,8 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				3ACAF2FC2F338ADD00EBD80A /* stream_app.app */,
-				3ACAF30B2F338ADF00EBD80A /* stream_appTests.xctest */,
-				3ACAF3152F338ADF00EBD80A /* stream_appUITests.xctest */,
+				3AA48C4B2F35E08C000D25D3 /* stream_appTests.xctest */,
+				3AA48C582F35E09D000D25D3 /* stream_appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +95,52 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3AA48C4A2F35E08C000D25D3 /* stream_appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AA48C512F35E08C000D25D3 /* Build configuration list for PBXNativeTarget "stream_appTests" */;
+			buildPhases = (
+				3AA48C472F35E08C000D25D3 /* Sources */,
+				3AA48C482F35E08C000D25D3 /* Frameworks */,
+				3AA48C492F35E08C000D25D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AA48C502F35E08C000D25D3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3AA48C4C2F35E08C000D25D3 /* stream_appTests */,
+			);
+			name = stream_appTests;
+			packageProductDependencies = (
+			);
+			productName = stream_appTests;
+			productReference = 3AA48C4B2F35E08C000D25D3 /* stream_appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3AA48C572F35E09D000D25D3 /* stream_appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AA48C602F35E09D000D25D3 /* Build configuration list for PBXNativeTarget "stream_appUITests" */;
+			buildPhases = (
+				3AA48C542F35E09D000D25D3 /* Sources */,
+				3AA48C552F35E09D000D25D3 /* Frameworks */,
+				3AA48C562F35E09D000D25D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AA48C5F2F35E09D000D25D3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3AA48C592F35E09D000D25D3 /* stream_appUITests */,
+			);
+			name = stream_appUITests;
+			packageProductDependencies = (
+			);
+			productName = stream_appUITests;
+			productReference = 3AA48C582F35E09D000D25D3 /* stream_appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		3ACAF2FB2F338ADD00EBD80A /* stream_app */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ACAF31F2F338ADF00EBD80A /* Build configuration list for PBXNativeTarget "stream_app" */;
@@ -105,46 +163,6 @@
 			productReference = 3ACAF2FC2F338ADD00EBD80A /* stream_app.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3ACAF30A2F338ADF00EBD80A /* stream_appTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3ACAF3222F338ADF00EBD80A /* Build configuration list for PBXNativeTarget "stream_appTests" */;
-			buildPhases = (
-				3ACAF3072F338ADF00EBD80A /* Sources */,
-				3ACAF3082F338ADF00EBD80A /* Frameworks */,
-				3ACAF3092F338ADF00EBD80A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3ACAF30D2F338ADF00EBD80A /* PBXTargetDependency */,
-			);
-			name = stream_appTests;
-			packageProductDependencies = (
-			);
-			productName = stream_appTests;
-			productReference = 3ACAF30B2F338ADF00EBD80A /* stream_appTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3ACAF3142F338ADF00EBD80A /* stream_appUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3ACAF3252F338ADF00EBD80A /* Build configuration list for PBXNativeTarget "stream_appUITests" */;
-			buildPhases = (
-				3ACAF3112F338ADF00EBD80A /* Sources */,
-				3ACAF3122F338ADF00EBD80A /* Frameworks */,
-				3ACAF3132F338ADF00EBD80A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3ACAF3172F338ADF00EBD80A /* PBXTargetDependency */,
-			);
-			name = stream_appUITests;
-			packageProductDependencies = (
-			);
-			productName = stream_appUITests;
-			productReference = 3ACAF3152F338ADF00EBD80A /* stream_appUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -152,19 +170,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					3AA48C4A2F35E08C000D25D3 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 3ACAF2FB2F338ADD00EBD80A;
+					};
+					3AA48C572F35E09D000D25D3 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 3ACAF2FB2F338ADD00EBD80A;
+					};
 					3ACAF2FB2F338ADD00EBD80A = {
 						CreatedOnToolsVersion = 16.3;
-					};
-					3ACAF30A2F338ADF00EBD80A = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 3ACAF2FB2F338ADD00EBD80A;
-					};
-					3ACAF3142F338ADF00EBD80A = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 3ACAF2FB2F338ADD00EBD80A;
 					};
 				};
 			};
@@ -183,28 +201,28 @@
 			projectRoot = "";
 			targets = (
 				3ACAF2FB2F338ADD00EBD80A /* stream_app */,
-				3ACAF30A2F338ADF00EBD80A /* stream_appTests */,
-				3ACAF3142F338ADF00EBD80A /* stream_appUITests */,
+				3AA48C4A2F35E08C000D25D3 /* stream_appTests */,
+				3AA48C572F35E09D000D25D3 /* stream_appUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3AA48C492F35E08C000D25D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA48C562F35E09D000D25D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ACAF2FA2F338ADD00EBD80A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3ACAF3092F338ADF00EBD80A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3ACAF3132F338ADF00EBD80A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,21 +232,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3AA48C472F35E08C000D25D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA48C542F35E09D000D25D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ACAF2F82F338ADD00EBD80A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3ACAF3072F338ADF00EBD80A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3ACAF3112F338ADF00EBD80A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,19 +256,101 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3ACAF30D2F338ADF00EBD80A /* PBXTargetDependency */ = {
+		3AA48C502F35E08C000D25D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3ACAF2FB2F338ADD00EBD80A /* stream_app */;
-			targetProxy = 3ACAF30C2F338ADF00EBD80A /* PBXContainerItemProxy */;
+			targetProxy = 3AA48C4F2F35E08C000D25D3 /* PBXContainerItemProxy */;
 		};
-		3ACAF3172F338ADF00EBD80A /* PBXTargetDependency */ = {
+		3AA48C5F2F35E09D000D25D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3ACAF2FB2F338ADD00EBD80A /* stream_app */;
-			targetProxy = 3ACAF3162F338ADF00EBD80A /* PBXContainerItemProxy */;
+			targetProxy = 3AA48C5E2F35E09D000D25D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3AA48C522F35E08C000D25D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream_app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream_app";
+			};
+			name = Debug;
+		};
+		3AA48C532F35E08C000D25D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream_app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream_app";
+			};
+			name = Release;
+		};
+		3AA48C612F35E09D000D25D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = stream_app;
+			};
+			name = Debug;
+		};
+		3AA48C622F35E09D000D25D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = stream_app;
+			};
+			name = Release;
+		};
 		3ACAF31D2F338ADF00EBD80A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -426,77 +526,27 @@
 			};
 			name = Release;
 		};
-		3ACAF3232F338ADF00EBD80A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream_app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream_app";
-			};
-			name = Debug;
-		};
-		3ACAF3242F338ADF00EBD80A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream_app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream_app";
-			};
-			name = Release;
-		};
-		3ACAF3262F338ADF00EBD80A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = stream_app;
-			};
-			name = Debug;
-		};
-		3ACAF3272F338ADF00EBD80A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sdv.stream-appUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = stream_app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3AA48C512F35E08C000D25D3 /* Build configuration list for PBXNativeTarget "stream_appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AA48C522F35E08C000D25D3 /* Debug */,
+				3AA48C532F35E08C000D25D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AA48C602F35E09D000D25D3 /* Build configuration list for PBXNativeTarget "stream_appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AA48C612F35E09D000D25D3 /* Debug */,
+				3AA48C622F35E09D000D25D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3ACAF2F72F338ADD00EBD80A /* Build configuration list for PBXProject "stream_app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -511,24 +561,6 @@
 			buildConfigurations = (
 				3ACAF3202F338ADF00EBD80A /* Debug */,
 				3ACAF3212F338ADF00EBD80A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3ACAF3222F338ADF00EBD80A /* Build configuration list for PBXNativeTarget "stream_appTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3ACAF3232F338ADF00EBD80A /* Debug */,
-				3ACAF3242F338ADF00EBD80A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3ACAF3252F338ADF00EBD80A /* Build configuration list for PBXNativeTarget "stream_appUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3ACAF3262F338ADF00EBD80A /* Debug */,
-				3ACAF3272F338ADF00EBD80A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

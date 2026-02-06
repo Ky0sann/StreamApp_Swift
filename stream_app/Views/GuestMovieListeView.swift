@@ -32,6 +32,7 @@ struct GuestMovieListView: View {
                                 )
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("guest_login")
 
                         Spacer()
                     }

@@ -22,6 +22,8 @@ struct RegisterView: View {
 
             SecureField("Mot de passe", text: $password)
                 .accessibilityIdentifier("register_password")
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
                 .textFieldStyle(.roundedBorder)
             
 //            Affichage des messages d'erreurs / réussite

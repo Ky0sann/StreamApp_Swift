@@ -138,6 +138,7 @@ struct ProfileView: View {
                         authVM.logout()
                     }
                     .foregroundColor(.red)
+                    .accessibilityIdentifier("logout_button")
                 }
             }
             .listStyle(.insetGrouped)

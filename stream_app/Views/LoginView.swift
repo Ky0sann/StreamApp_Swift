@@ -16,6 +16,8 @@ struct LoginView: View {
 
             SecureField("Mot de passe", text: $password)
                 .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
                 .accessibilityIdentifier("login_password")
             
 //            Affichage des messages d'erreurs / réussite

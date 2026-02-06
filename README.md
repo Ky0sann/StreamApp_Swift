@@ -30,6 +30,8 @@
 - Récupération et affichage des films via API
 - Détail d'un Film (image, description, note)
 - Gestion des Favoris par utilisateur
+- Notation et commentaire
+- Nettoyage du cache
 
 ## Structure du projet
 
@@ -40,7 +42,9 @@
 | Branche | Maintainers | Description |
 |--------|-------------|-------------|
 | [main](https://github.com/Ky0sann/StreamApp_Swift/tree/main) | <a href="https://github.com/ky0sann"><img src="https://avatars.githubusercontent.com/u/148047081?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/Alexandre-git-SDV"><img src="https://avatars.githubusercontent.com/u/148047039?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/aldin285"><img src="https://avatars.githubusercontent.com/u/148047232?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche de production de Stream App|
-| [stream_app_1.0](https://github.com/Ky0sann/StreamApp_Swift/tree/stream_app_1.0) | <a href="https://github.com/ky0sann"><img src="https://avatars.githubusercontent.com/u/148047081?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche de production pour la V1 de Stream App |
+| [stream_app_1.0](https://github.com/Ky0sann/StreamApp_Swift/tree/stream_app_1.0) | <a href="https://github.com/ky0sann"><img src="https://avatars.githubusercontent.com/u/148047081?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche de production pour la V1 de Stream App 
+| [stream_app_2.0](https://github.com/Ky0sann/StreamApp_Swift/tree/stream_app_2.0) | <a href="https://github.com/ky0sann"><img src="https://avatars.githubusercontent.com/u/148047081?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/Alexandre-git-SDV"><img src="https://avatars.githubusercontent.com/u/148047039?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/aldin285"><img src="https://avatars.githubusercontent.com/u/148047232?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche de production pour la V2 de Stream App 
+| [stream_app_3.0](https://github.com/Ky0sann/StreamApp_Swift/tree/stream_app_3.0) | <a href="https://github.com/ky0sann"><img src="https://avatars.githubusercontent.com/u/148047081?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/Alexandre-git-SDV"><img src="https://avatars.githubusercontent.com/u/148047039?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/aldin285"><img src="https://avatars.githubusercontent.com/u/148047232?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche de production pour la V3 de Stream App |
 | [development](https://github.com/Ky0sann/StreamApp_Swift/tree/development) | <a href="https://github.com/ky0sann"><img src="https://avatars.githubusercontent.com/u/148047081?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/Alexandre-git-SDV"><img src="https://avatars.githubusercontent.com/u/148047039?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> <a href="https://github.com/aldin285"><img src="https://avatars.githubusercontent.com/u/148047232?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche pour l'ensemble des développements |
 | [test](https://github.com/assistinfone-git/AIO_modules/tree/development) | <a href="https://github.com/Alexandre-git-SDV"><img src="https://avatars.githubusercontent.com/u/148047039?v=4" width="32" height="32" style="border-radius:50%;" alt=""/></a> | Branche pour l'ensemble des Tests Unintaires et UI |
 
